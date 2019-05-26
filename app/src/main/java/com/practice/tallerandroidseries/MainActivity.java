@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerSeries = findViewById(R.id.recyclerSeries);
         //recyclerSeries.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        recyclerSeries.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerSeries.setLayoutManager(new GridLayoutManager(this, 1|x));
 
         listaSeries = new ArrayList<Serie>();
         loadSeries();

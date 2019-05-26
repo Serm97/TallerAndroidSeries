@@ -5,25 +5,25 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:layout_margin="5dp">
+    android:padding="1dp"
+    android:layout_margin="3dp">
 
     <ImageView
         android:id="@+id/imageSerie"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:srcCompat="@tools:sample/avatars[2]" />
+        android:layout_height="237dp"
+        tools:srcCompat="@drawable/casapapel" />
 
     <TextView
         android:id="@+id/nameSerie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
         android:text="Serie #1"
         android:textStyle="bold"
         android:textSize="18dp"
         android:fontFamily="casual"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:textColor="#ffffff"/>
 
 
 </LinearLayout>
