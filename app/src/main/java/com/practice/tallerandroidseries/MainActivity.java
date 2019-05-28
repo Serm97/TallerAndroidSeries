@@ -1,5 +1,6 @@
 package com.practice.tallerandroidseries;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -28,12 +30,25 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerSeries = findViewById(R.id.recyclerSeries);
         //recyclerSeries.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        recyclerSeries.setLayoutManager(new GridLayoutManager(this, 1|x));
+        recyclerSeries.setLayoutManager(new GridLayoutManager(this, 2));
 
         listaSeries = new ArrayList<Serie>();
         loadSeries();
 
         AdapterSeries adapterSeries = new AdapterSeries(listaSeries);
+        adapterSeries.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SerieActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("serie", listaSeries.get(recyclerSeries.getChildAdapterPosition(v)));
+
+                intent.putExtras(bundle);
+                startActivity(intent);
+                Toast.makeText(getApplicationContext(), "Selección: "+listaSeries.get(recyclerSeries.getChildAdapterPosition(v))
+                        .getNameSerie(), Toast.LENGTH_SHORT).show();
+            }
+        });
         recyclerSeries.setAdapter(adapterSeries);
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -51,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         listaSeries.add(new Serie("La Casa de Papel", R.drawable.casapapel));
         listaSeries.add(new Serie("Caso Colmenares", R.drawable.colmenares));
         listaSeries.add(new Serie("Crazy Head", R.drawable.crazyhead));
-        listaSeries.add(new Serie("The End of the F**ing World", R.drawable.endworld));
+        listaSeries.add(new Serie("End F**ing World", R.drawable.endworld));
         listaSeries.add(new Serie("Lucifer", R.drawable.lucifer));
         listaSeries.add(new Serie("Maniac", R.drawable.maniac));
         listaSeries.add(new Serie("Narcos", R.drawable.narcos));
@@ -59,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         listaSeries.add(new Serie("El Recluso", R.drawable.recluso));
         listaSeries.add(new Serie("Sex Education", R.drawable.sexeducation));
         listaSeries.add(new Serie("The Society", R.drawable.society));
-        listaSeries.add(new Serie("Universo Stranger Things", R.drawable.strangerthings));
+        listaSeries.add(new Serie("Stranger Things", R.drawable.strangerthings));
     }
 
     @Override

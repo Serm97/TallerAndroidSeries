@@ -1,6 +1,8 @@
 package com.practice.tallerandroidseries;
 
-public class Serie {
+import java.io.Serializable;
+
+public class Serie implements Serializable {
 
     private String nameSerie;
     private int imageSerie;

@@ -10,9 +10,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class AdapterSeries extends RecyclerView.Adapter<AdapterSeries.ViewHolderSeries> {
+public class AdapterSeries extends RecyclerView.Adapter<AdapterSeries.ViewHolderSeries> implements View.OnClickListener {
 
     ArrayList<Serie> listaSeries;
+    private View.OnClickListener listener;
 
     public AdapterSeries(ArrayList<Serie> listaSeries) {
         this.listaSeries = listaSeries;
@@ -23,6 +24,9 @@ public class AdapterSeries extends RecyclerView.Adapter<AdapterSeries.ViewHolder
     public ViewHolderSeries onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.item_serie, null, false);
+
+        view.setOnClickListener(this);
+
         return new ViewHolderSeries(view);
     }
 
@@ -35,6 +39,17 @@ public class AdapterSeries extends RecyclerView.Adapter<AdapterSeries.ViewHolder
     @Override
     public int getItemCount() {
         return listaSeries.size();
+    }
+
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(listener != null){
+            listener.onClick(view);
+        }
     }
 
     public class ViewHolderSeries extends RecyclerView.ViewHolder {
