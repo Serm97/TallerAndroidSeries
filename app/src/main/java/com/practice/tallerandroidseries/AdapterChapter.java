@@ -12,10 +12,10 @@ import android.widget.Toast;
 public class AdapterChapter extends RecyclerView.Adapter<AdapterChapter.ViewHolderChapter> implements View.OnClickListener{
 
     private View.OnClickListener listener;
+    private Serie serie;
 
-
-    public AdapterChapter() {
-
+    public AdapterChapter(Serie serie) {
+        this.serie = serie;
     }
 
     @NonNull
@@ -32,13 +32,13 @@ public class AdapterChapter extends RecyclerView.Adapter<AdapterChapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull AdapterChapter.ViewHolderChapter viewHolderChapter, int i) {
         viewHolderChapter.temporada.setText("T1");
-        viewHolderChapter.nombreCapitulo.setText("Capitulo que no se que pasa");
-        viewHolderChapter.duracion.setText("00:00");
+        viewHolderChapter.nombreCapitulo.setText("Capitulo " + i + " de la serie " + serie.getNameSerie());
+        viewHolderChapter.duracion.setText("01:"+i+(i+1));
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return 8;
     }
 
     public void setOnClickListener(View.OnClickListener listener){
